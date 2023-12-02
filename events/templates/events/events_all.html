@@ -1,8 +1,7 @@
 {% extends 'index.html' %}
 
 {% block body %}
-	<h1>Events_all</h1>
-
+	<h1>Все события</h1>
     {% for event in events %}
     	<a href="{% url 'event_detail' event.id %}"> {{ event.title }}</a>
     {% endfor %}

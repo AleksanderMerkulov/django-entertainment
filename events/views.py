@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+
 from .models import Event
 from django.views.generic import DetailView
 
@@ -6,8 +8,10 @@ from django.views.generic import DetailView
 # Create your views here.
 def events_all(request):
     events = Event.objects.all()
-
-    return render(request, 'events/events_all.html', {"events": events})
+    if request.user.is_authenticated:
+        return render(request, 'events/events_all.html', {"events": events})
+    else:
+        return redirect('home')
 
 
 class EventDetail(DetailView):
