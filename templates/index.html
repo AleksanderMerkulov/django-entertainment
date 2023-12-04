@@ -7,17 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Отдыхаем.ру</title>
 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
-<body>
-    <header class="row">
-        <div class="col-4"></div>
-        <div class="col-4"></div>
-        <div class="col-4">
-            <nav>
-                <a href="{% url 'home' %}">главная</a>
-                <a href="{% url 'instructions' %}">инструкция</a>
-                <a href="{% url 'events_all' %}">все события</a>
+<body class="container-xl">
+    <header class="row header">
+        <a href="{% url 'home' %}" title="Главная странциа" class="col-4">
+            <img src="{% static 'logo.svg' %}" alt="">
+        </a>
+        <div class="col-4" style="justify-content: center;">
+            <img src="{% static 'slogan.svg' %}" alt="">
+        </div>
+        <div class="col-4" style="justify-content: flex-end; gap: 20px">
+
                 {% if not user.is_authenticated %}
                     <a href="{% url 'login' %}">войти</a>
                     <a href="{% url 'registration' %}">регистрация</a>
@@ -26,8 +32,15 @@
                     <a href="{% url 'account' %}">профиль</a>
                     <a href="{% url 'logout' %}">выйти</a>
                 {% endif %}
-            </nav>
         </div>
+        <nav class="col-12">
+            <a href="">Театр</a>
+            <a href="">Кино</a>
+            <a href="">Природа</a>
+            <a href="">Актуально</a>
+            <a href="">Концерты</a>
+            <a href="{% url 'events_all' %}">все события</a>
+        </nav>
     </header>
     {%  block body %}
 

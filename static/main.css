@@ -1,0 +1,29 @@
+*{
+    transition: 0.15s;
+    /*font-family: 'Caveat', cursive;*/
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.header nav{
+    background: #9999FF;
+}
+
+.header a{
+    color: #2C2C2C;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.header a:hover{
+    transform: translateY(-2px);
+}
+
+.header .col-4{
+    display: flex;
+    align-items: center
+}
+
+nav a{
+    margin-right: 20px;
+}
