@@ -2,6 +2,9 @@
 
 {% block body %}
 	<h1>Все события</h1>
+    {% if pk %}
+    	<h1>{{ pk }}</h1>
+    {% endif %} 
     {% for event in events %}
     	<a href="{% url 'event_detail' event.id %}"> {{ event.title }}</a>
     {% endfor %}
