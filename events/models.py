@@ -8,9 +8,15 @@ class Category(models.Model):
     title = models.CharField("Title", max_length=100, default='')
     description = models.TextField("Description", default="")
 
+    def __str__(self):
+        return self.title
+
 
 class TypeOfEvent(models.Model):
     name = models.CharField('Name', max_length=20, default='close')
+
+    def __str__(self):
+        return self.name
 
 
 class Event(models.Model):

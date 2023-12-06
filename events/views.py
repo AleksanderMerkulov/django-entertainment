@@ -17,14 +17,9 @@ class EventDetail(DetailView):
     context_object_name = 'event'
 
 
-def events_all_category(request):
-    events = Event.objects.all()
-    return render(request, "events/events_all_category.html", {"events": events})
-
-
 def events_all_by_category(request, pk="all"):
     id_cat = Category.objects.filter(title=pk).first()
     if id_cat is None:
-        return redirect('events_by_all_category')
+        return redirect('events_all')
     events = Event.objects.filter(id=id_cat.id)
     return render(request, "events/events_all.html", {"events": events})
