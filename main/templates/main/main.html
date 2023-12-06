@@ -2,4 +2,21 @@
 
 {% block body %}
     <h1>Главная страница</h1>
+
+    {% for cinema in cinemas %}
+    	<p>{{ cinema.title }}</p>
+    {% endfor %}
+
+    {% for ac in actual %}
+    	<p>{{ ac.title }}</p>
+    {% endfor %}
+
+    {% for theater in theaters %}
+    	<p>{{ theater.title }}</p>
+    {% endfor %}
+
+    {% for theater in jopa %}
+    	<p>{{ theater.title }}</p>
+    {% endfor %}
+
 {% endblock %}

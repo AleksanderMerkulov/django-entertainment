@@ -27,6 +27,7 @@ class Event(models.Model):
     category = models.ForeignKey('events.Category', models.SET(1))
     source = models.CharField("Source", max_length=200, default='')
     typeOfEvent = models.ForeignKey('events.TypeOfEvent', models.SET(1))
+    image = models.ImageField(upload_to="images", default=None, null=True)
 
     def __str__(self):
         return self.title
