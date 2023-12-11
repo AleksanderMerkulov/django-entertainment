@@ -8,7 +8,7 @@ from django.views.generic import DetailView
 
 # Create your views here.
 def events_all(request):
-    events = Event.objects.all()
+    events = Event.objects.filter(typeOfEvent__name="public")
     return render(request, 'events/events_all.html', {"events": events})
 
 
@@ -22,7 +22,7 @@ def events_all_by_category(request, pk="all"):
     id_cat = Category.objects.filter(title=pk).first()
     if id_cat is None:
         return redirect('events_all')
-    events = Event.objects.filter(id=id_cat.id)
+    events = Event.objects.filter(id=id_cat.id) & Event.objects.filter(typeOfEvent__name="public")
     return render(request, "events/events_all.html", {"events": events})
 
 

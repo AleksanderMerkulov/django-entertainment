@@ -6,7 +6,10 @@
     	<h1>{{ pk }}</h1>
     {% endif %} 
     {% for event in events %}
-    	<a href="{% url 'event_detail' event.id %}"> {{ event.title }}</a>
+            <div class="all-event__item">
+                <a href="{% url 'event_detail' event.id %}"> {{ event.title }} {{ event.date }}</a>
+            </div>
+
     {% endfor %}
 
 {% endblock %}

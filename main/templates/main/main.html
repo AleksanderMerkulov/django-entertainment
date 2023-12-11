@@ -3,20 +3,46 @@
 {% block body %}
     <h1>Главная страница</h1>
 
-    {% for cinema in cinemas %}
-    	<p>{{ cinema.title }}</p>
-    {% endfor %}
+    {% if actual %}
+        <div class="main-cat">
+            <h2 class="main-cat__title">Актуально сейчас</h2>
 
-    {% for ac in actual %}
-    	<p>{{ ac.title }}</p>
-    {% endfor %}
+            {% for ac in actual %}
+                <p>{{ ac.title }}</p>
+            {% endfor %}
+        </div>
+     {% endif %}
 
-    {% for theater in theaters %}
-    	<p>{{ theater.title }}</p>
-    {% endfor %}
+    {% if cinemas %}
+        <div class="main-cat">
+            <h2 class="main-cat__title">Кино</h2>
+            {% for cinema in cinemas %}
+                <div class="event-item">{{ cinema.title }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
-    {% for theater in jopa %}
-    	<p>{{ theater.title }}</p>
-    {% endfor %}
+
+    {% if theaters %}
+        <div class="main-cat">
+            <h2 class="main-cat__title">Театры</h2>
+
+            {% for theater in theaters %}
+                <p>{{ theater.title }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+    {% if jopa %}
+        <div class="main-cat">
+            <h2 class="main-cat__title">Театры</h2>
+
+            {% for theater in jopa %}
+                <p>{{ theater.title }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
 
 {% endblock %}
