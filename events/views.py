@@ -28,10 +28,15 @@ def events_all_by_category(request, pk="all"):
 
 def addEvent(request):
     if request.method == "POST":
-        form = AddEvent(request.POST)
+        form = AddEvent(request.POST, request.FILES)
+        # form.fields['creator_id'].initial = request.user.id
+
         if form.is_valid():
-            form.save()
-            redirect('home')
+            # Event.creator_id = request.user.id
+            ev = form.save(commit=False)
+            ev.creator_id_id = request.user.id
+            ev.save()
+            return redirect('home')
     else:
         form = AddEvent()
     return render(request, 'events/addEvent.html', {"form": form})
