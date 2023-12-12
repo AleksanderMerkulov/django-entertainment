@@ -17,7 +17,13 @@
         <div class="main-cat">
             <h2 class="main-cat__title">Кино</h2>
             {% for cinema in cinemas %}
-                <div class="event-item">{{ cinema.title }}</div>
+                <div class="event-item">{{ cinema.title }}
+                    {% if cinema.image %}
+                        <img src="/media/{{ cinema.image }}" alt="">
+                    {% else %}
+                        <p></p>
+                    {% endif %}
+                </div>
             {% endfor %}
         </div>
     {% endif %}
