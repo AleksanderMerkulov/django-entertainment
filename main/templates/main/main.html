@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load static %}
 
 {% block body %}
     <h1>Главная страница</h1>
@@ -6,24 +7,35 @@
     {% if actual %}
         <div class="main-cat">
             <h2 class="main-cat__title">Актуально сейчас</h2>
-
             {% for ac in actual %}
-                <p>{{ ac.title }}</p>
+                <div class="event-item">
+                    {% if ac.image %}
+                        <img class="event-item__img" src="/media/{{ ac.image }}" alt="">
+                    {% else %}
+                        <img class="event-item__img" src={% static 'картинка.png' %} alt="">
+                    {% endif %}
+                    <h3 class="event-item__title">{{ ac.title }}</h3>
+                    <p class="event-item__anons">{{ ac.anons }}</p>
+                </div>
+
             {% endfor %}
         </div>
      {% endif %}
 
     {% if cinemas %}
-        <div class="main-cat">
+        <div class="row main-cat">
             <h2 class="main-cat__title">Кино</h2>
             {% for cinema in cinemas %}
-                <div class="event-item">{{ cinema.title }}
+                <div class="event-item">
                     {% if cinema.image %}
-                        <img src="/media/{{ cinema.image }}" alt="">
+                        <img class="event-item__img" src="/media/{{ cinema.image }}" alt="">
                     {% else %}
-                        <p></p>
+                        <img class="event-item__img" src={% static 'картинка.png' %} alt="">
                     {% endif %}
+                    <h3 class="event-item__title">{{ cinema.title }}</h3>
+                    <p class="event-item__anons">{{ cinema.anons }}</p>
                 </div>
+
             {% endfor %}
         </div>
     {% endif %}
@@ -32,20 +44,17 @@
     {% if theaters %}
         <div class="main-cat">
             <h2 class="main-cat__title">Театры</h2>
-
             {% for theater in theaters %}
-                <p>{{ theater.title }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
+                <div class="event-item">
+                    {% if theater.image %}
+                        <img class="event-item__img" src="/media/{{ theater.image }}" alt="">
+                    {% else %}
+                        <img class="event-item__img" src={% static 'картинка.png' %} alt="">
+                    {% endif %}
+                    <h3 class="event-item__title">{{ theater.title }}</h3>
+                    <p class="event-item__anons">{{ theater.anons }}</p>
+                </div>
 
-
-    {% if jopa %}
-        <div class="main-cat">
-            <h2 class="main-cat__title">Театры</h2>
-
-            {% for theater in jopa %}
-                <p>{{ theater.title }}</p>
             {% endfor %}
         </div>
     {% endif %}

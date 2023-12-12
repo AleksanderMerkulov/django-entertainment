@@ -6,9 +6,9 @@ from events.models import *
 
 
 def main_page(request):
-    cinemas = Event.objects.filter(category_id=2)[0:5]
-    actual = Event.objects.filter(category_id=4)[0:5]
-    theaters = Event.objects.filter(category_id=3)[0:5]
+    cinemas = Event.objects.filter(category_id=2) & Event.objects.filter(typeOfEvent__name='public')[0:5]
+    actual = Event.objects.filter(category_id=4) & Event.objects.filter(typeOfEvent__name='public')[0:5]
+    theaters = Event.objects.filter(category_id=3) & Event.objects.filter(typeOfEvent__name='public')[0:5]
     jopa = None
     if True:
         jopa = Event.objects.all()
