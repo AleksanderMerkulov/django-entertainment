@@ -35,7 +35,7 @@ event-item
 .event-item{
     flex: 0 0 auto;
     width: 23%;
-    margin: 0 1%;
+    margin: 0 1% 1% 1%;
     padding: 0;
     overflow: hidden;
 
@@ -45,4 +45,6 @@ event-item
 
 .event-item__img{
     width: 100%;
+    object-fit: cover;
+    max-height: 110px;
 }
