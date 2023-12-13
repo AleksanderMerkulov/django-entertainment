@@ -5,7 +5,7 @@
     <h1>Главная страница</h1>
 
     {% if actual %}
-        <div class="main-cat">
+        <div class="row main-cat">
             <h2 class="main-cat__title">Актуально сейчас</h2>
             {% for ac in actual %}
                 <div class="event-item">
@@ -14,7 +14,7 @@
                     {% else %}
                         <img class="event-item__img" src={% static 'картинка.png' %} alt="">
                     {% endif %}
-                    <h3 class="event-item__title">{{ ac.title }}</h3>
+                    <h3 class="event-item__title"><a href="{% url 'event_detail' ac.id %}">{{ ac.title }}</a></h3>
                     <p class="event-item__anons">{{ ac.anons }}</p>
                 </div>
 
@@ -32,7 +32,7 @@
                     {% else %}
                         <img class="event-item__img" src={% static 'картинка.png' %} alt="">
                     {% endif %}
-                    <h3 class="event-item__title">{{ cinema.title }}</h3>
+                    <h3 class="event-item__title"><a href="{% url 'event_detail' cinema.id %}">{{ cinema.title }}</a></h3>
                     <p class="event-item__anons">{{ cinema.anons }}</p>
                 </div>
 
@@ -42,7 +42,7 @@
 
 
     {% if theaters %}
-        <div class="main-cat">
+        <div class="row main-cat">
             <h2 class="main-cat__title">Театры</h2>
             {% for theater in theaters %}
                 <div class="event-item">
@@ -51,7 +51,7 @@
                     {% else %}
                         <img class="event-item__img" src={% static 'картинка.png' %} alt="">
                     {% endif %}
-                    <h3 class="event-item__title">{{ theater.title }}</h3>
+                    <h3 class="event-item__title"><a href="{% url 'event_detail' theater.id %}">{{ theater.title }}</a></h3>
                     <p class="event-item__anons">{{ theater.anons }}</p>
                 </div>
 

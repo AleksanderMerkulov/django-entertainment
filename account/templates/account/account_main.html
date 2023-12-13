@@ -1,5 +1,39 @@
 {% extends 'index.html' %}
+{% load static %}
 
 {% block body %}
+    <div class="row main-cat">
+        <h2 class="main-cat__title">События сегодня:</h2>
+        {% if today_event.count is 0  %}<p>события отсутствуют</p>{% endif %}
+        {% for event in today_event %}
+            <div class="event-item">
+                {% if event.image %}
+                    <img class="event-item__img" src="/media/{{ event.image }}" alt="">
+                {% else %}
+                    <img class="event-item__img" src={% static 'картинка.png' %} alt="">
+                {% endif %}
+                <h3 class="event-item__title"><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></h3>
+                <p class="event-item__anons">{{ event.anons }}</p>
+            </div>
+
+        {% endfor %}
+    </div>
+
+    <div class="row main-cat">
+        <h2 class="main-cat__title">Ближайшие события:</h2>
+        {% if future_event.count is 0 %}<p>события отсутствуют</p>{% endif %}
+        {% for event in future_event %}
+            <div class="event-item">
+                {% if event.image %}
+                    <img class="event-item__img" src="/media/{{ event.image }}" alt="">
+                {% else %}
+                    <img class="event-item__img" src={% static 'картинка.png' %} alt="">
+                {% endif %}
+                <h3 class="event-item__title"><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></h3>
+                <p class="event-item__anons">{{ event.anons }}</p>
+            </div>
+
+        {% endfor %}
+    </div>
 
 {% endblock %}
