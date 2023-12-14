@@ -1,9 +1,10 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 
 from .forms import AddEvent
 from .models import *
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView, DeleteView
 
 
 # Create your views here.
@@ -40,3 +41,15 @@ def addEvent(request):
     else:
         form = AddEvent()
     return render(request, 'events/addEvent.html', {"form": form})
+
+
+class EventEdit(UpdateView):
+    model = Event
+    template_name = 'events/changeEvent.html'
+    fields = ['title', 'anons']
+
+    def get_object(self, queryset=None):
+        company = super(EventEdit, self).get_object(queryset)
+        if company.creator_id_id != self.request.user.id:
+            raise Http404('Error')
+        return company

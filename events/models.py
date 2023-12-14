@@ -29,5 +29,8 @@ class Event(models.Model):
     typeOfEvent = models.ForeignKey('events.TypeOfEvent', models.SET(1))
     image = models.ImageField(upload_to="images", default=None, null=True)
 
+    def get_absolute_url(self):
+        return f'/events/{self.id}/'
+
     def __str__(self):
         return self.title
