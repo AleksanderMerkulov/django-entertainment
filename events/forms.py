@@ -18,5 +18,4 @@ class AddEvent(forms.ModelForm):
             'source': forms.TextInput(attrs={'class': 'text-input'}),
             'typeOfEvent': forms.Select(),
             'image': forms.FileInput(),
-            # 'creator_id': forms.Select()
         }
