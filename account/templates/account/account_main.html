@@ -2,8 +2,16 @@
 {% load static %}
 
 {% block body %}
+    <div class="account-info">
+        <div class="account-info__top">
+            <h2 class="">Ваши данные:</h2>
+            <a href="{% url 'edit_profile' %}" class="btn btn-primary">изменить</a>
+        </div>
+        <p>Имя: {{ user.first_name }}</p>
+        <p>Почта: {{ user.email }}</p>
+    </div>
     <div class="row main-cat">
-        <h2 class="main-cat__title">События сегодня:</h2>
+        <h2 class="main-cat__title">События сегодня: <a href="{% url 'add_event' %}" class="btn btn-success">создать событие</a></h2>
         {% if today_event.count is 0  %}<p>события отсутствуют</p>{% endif %}
         {% for event in today_event %}
             <div class="event-item">

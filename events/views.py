@@ -23,8 +23,8 @@ def events_all_by_category(request, pk="all"):
     id_cat = Category.objects.filter(title=pk).first()
     if id_cat is None:
         return redirect('events_all')
-    events = Event.objects.filter(id=id_cat.id) & Event.objects.filter(typeOfEvent__name="public")
-    return render(request, "events/events_all.html", {"events": events})
+    events = Event.objects.filter(category_id=id_cat.id) & Event.objects.filter(typeOfEvent__name="public")
+    return render(request, "events/events_all.html", {"events": events, 'pk': pk})
 
 
 def addEvent(request):
@@ -46,7 +46,7 @@ def addEvent(request):
 class EventEdit(UpdateView):
     model = Event
     template_name = 'events/changeEvent.html'
-    fields = ['title', 'anons']
+    fields = ['title', 'anons', 'description']
 
     def get_object(self, queryset=None):
         company = super(EventEdit, self).get_object(queryset)

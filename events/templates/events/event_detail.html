@@ -1,9 +1,21 @@
 {% extends 'index.html' %}
+{% load static %}
+
 
 {% block body %}
+    <link rel="stylesheet" href="{% static 'events/events.css' %}">
 
-    <p>{{ event.title }}</p>
-    <p>{{ event.typeOfEvent }}</p>
-    <p>{{ event.creator_id }}</p>
+    <div class="event-item-container">
+        <img class="event-item-container__img" src="/media/{{ event.image }}" alt="">
+        <h2>{{ event.title }}
+            {% if event.creator_id_id is user.id %}
+        	<a href="edit/" class="btn btn-success">изменить</a>
+            {% endif %}
+        </h2>
+        <p>{{ event.anons }}</p>
+        <p>{{ event.description }}</p>
+        <p>Автор: {{ event.creator_id }}</p>
+        <p>Дата проведения: {{ event.date.date }}</p>
+    </div>
 
 {% endblock %}

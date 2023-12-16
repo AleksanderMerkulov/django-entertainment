@@ -22,6 +22,7 @@ class TypeOfEvent(models.Model):
 class Event(models.Model):
     title = models.CharField('Title', max_length=50, default='')
     anons = models.CharField('Anons', max_length=100, default='')
+    description = models.CharField('Description', max_length=100, default='', blank=True, null=True)
     date = models.DateTimeField('Date', default=django.utils.timezone.now())
     creator_id = models.ForeignKey('auth.User', models.SET(1))
     category = models.ForeignKey('events.Category', models.SET(1))

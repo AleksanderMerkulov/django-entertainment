@@ -1,15 +1,24 @@
 {% extends 'index.html' %}
+{% load static %}
 
 {% block body %}
-	<h1>Все события</h1>
-    {% if pk %}
-    	<h1>{{ pk }}</h1>
-    {% endif %} 
-    {% for event in events %}
-            <div class="all-event__item">
-                <a href="{% url 'event_detail' event.id %}"> {{ event.title }} {{ event.date }}</a>
-            </div>
+	<h1 class="main-cat__title">Категория: {{ pk }}</h1>
+     {% if events %}
+        <div class="row main-cat">
 
-    {% endfor %}
+            {% for event in events %}
+                <div class="event-item">
+                    {% if event.image %}
+                        <img class="event-item__img" src="/media/{{ event.image }}" alt="">
+                    {% else %}
+                        <img class="event-item__img" src={% static 'картинка.png' %} alt="">
+                    {% endif %}
+                    <h3 class="event-item__title"><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></h3>
+                    <p class="event-item__anons">{{ event.anons }}</p>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% endif %}
 
 {% endblock %}

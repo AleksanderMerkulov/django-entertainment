@@ -4,4 +4,5 @@ from account import views
 
 urlpatterns = [
     path('', views.account, name="account"),
+    path('edit/', views.UserUpdateView.as_view(), name="edit_profile"),
 ]
