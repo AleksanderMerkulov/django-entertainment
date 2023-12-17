@@ -12,7 +12,7 @@ from events.models import Event
 @login_required
 def account(request):
     future_event = Event.objects.filter(creator_id=request.user.id) & Event.objects.filter(
-        date__lt=django.utils.timezone.now())
+        date__gt=django.utils.timezone.now())
 
     today_event = Event.objects.filter(creator_id=request.user.id) & Event.objects.filter(
         date__day=django.utils.timezone.now().day)
